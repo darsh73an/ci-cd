@@ -1,0 +1,23 @@
+# CI = Continuous Integration: automatically test every change.
+name: CI
+
+# WHEN to run: on every push to main and on every pull request
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest        # GitHub gives you a fresh Linux machine
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run tests
+        run: npm test             # if this fails, the whole run goes red
