@@ -14,3 +14,7 @@ export function divide(a, b) {
   if (b === 0) throw new Error('Cannot divide by zero');
   return a / b;
 }
+
+export function power(a, b){
+  return Math.pow(a, b);
+}
